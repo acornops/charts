@@ -32,9 +32,14 @@ jobs:
     steps:
       - name: Checkout chart repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup Helm
         uses: azure/setup-helm@v4
+
+      - name: Fast-forward main
+        run: git pull --ff-only origin main
 
       - name: Resolve inputs
         id: input
