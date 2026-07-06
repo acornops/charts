@@ -1,9 +1,52 @@
 apiVersion: v1
 entries:
+  acornops-agentk:
+  - apiVersion: v2
+    appVersion: 0.0.1-experimental.4
+    created: "2026-07-06T18:02:56.558340168Z"
+    description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
+      execution.
+    digest: e2a865976e09a4f773b810da568c9ead09eb04aff809d32322904cf46fd2df36
+    home: https://github.com/acornops/agentk
+    keywords:
+    - acornops
+    - kubernetes
+    - aiops
+    - agent
+    maintainers:
+    - name: AcornOps
+    name: acornops-agentk
+    sources:
+    - https://github.com/acornops/agentk
+    type: application
+    urls:
+    - https://acornops.github.io/charts/acornops-agentk-0.0.1-experimental.4.tgz
+    version: 0.0.1-experimental.4
+  - apiVersion: v2
+    appVersion: 0.0.1-experimental.4
+    created: "2026-07-06T18:02:56.570585834Z"
+    description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
+      execution.
+    digest: e2a865976e09a4f773b810da568c9ead09eb04aff809d32322904cf46fd2df36
+    home: https://github.com/acornops/agentk
+    keywords:
+    - acornops
+    - kubernetes
+    - aiops
+    - agent
+    maintainers:
+    - name: AcornOps
+    name: acornops-agentk
+    sources:
+    - https://github.com/acornops/agentk
+    type: application
+    urls:
+    - https://acornops.github.io/charts/.publish/acornops-agentk-0.0.1-experimental.4.tgz
+    version: 0.0.1-experimental.4
   acornops-platform:
   - apiVersion: v2
     appVersion: 0.0.1-experimental.5
-    created: "2026-07-06T17:56:34.132030572Z"
+    created: "2026-07-06T18:02:56.569279517Z"
     description: AcornOps central platform services for Kubernetes
     digest: da4321120eaa9b4ab7c32a38317d1e79f059a73e5abb4f0f1628e399aeeec256
     name: acornops-platform
@@ -13,7 +56,7 @@ entries:
     version: 0.0.1-experimental.5
   - apiVersion: v2
     appVersion: 0.0.1-experimental.4
-    created: "2026-07-06T17:56:34.128985727Z"
+    created: "2026-07-06T18:02:56.567141616Z"
     description: AcornOps central platform services for Kubernetes
     digest: a986ab33527be978c0cec43a16021dd5e482f4cf415807306d82cc7817ba4463
     name: acornops-platform
@@ -22,18 +65,8 @@ entries:
     - https://acornops.github.io/charts/acornops-platform-0.0.1-experimental.4.tgz
     version: 0.0.1-experimental.4
   - apiVersion: v2
-    appVersion: 0.0.1-experimental.4
-    created: "2026-07-06T17:56:34.134042837Z"
-    description: AcornOps central platform services for Kubernetes
-    digest: a986ab33527be978c0cec43a16021dd5e482f4cf415807306d82cc7817ba4463
-    name: acornops-platform
-    type: application
-    urls:
-    - https://acornops.github.io/charts/.publish/acornops-platform-0.0.1-experimental.4.tgz
-    version: 0.0.1-experimental.4
-  - apiVersion: v2
     appVersion: 0.0.1-experimental.3
-    created: "2026-07-06T17:56:34.127114188Z"
+    created: "2026-07-06T18:02:56.565276556Z"
     description: AcornOps central platform services for Kubernetes
     digest: 42c7a742df952185d4d48c2df7c8e0ea76a70652742771e9a674477bfd9f1604
     name: acornops-platform
@@ -43,7 +76,7 @@ entries:
     version: 0.0.1-experimental.3
   - apiVersion: v2
     appVersion: 0.0.1-experimental.2
-    created: "2026-07-06T17:56:34.125215717Z"
+    created: "2026-07-06T18:02:56.563386509Z"
     description: AcornOps central platform services for Kubernetes
     digest: ca2dcfffdc6ca50cefb52f39875a7d21902fb58d8cd700ecfe4dc9d6f0a0e765
     name: acornops-platform
@@ -53,7 +86,7 @@ entries:
     version: 0.0.1-experimental.2
   - apiVersion: v2
     appVersion: 0.0.1-experimental.1
-    created: "2026-07-06T17:56:34.122144468Z"
+    created: "2026-07-06T18:02:56.560168309Z"
     description: AcornOps central platform services for Kubernetes
     digest: 21f9ad3a3c7faa0b09623bb536af22879986539289b3877786f45005192c583f
     name: acornops-platform
@@ -61,4 +94,4 @@ entries:
     urls:
     - https://acornops.github.io/charts/acornops-platform-0.0.1-experimental.1.tgz
     version: 0.0.1-experimental.1
-generated: "2026-07-06T17:56:34.120035079Z"
+generated: "2026-07-06T18:02:56.557531755Z"
