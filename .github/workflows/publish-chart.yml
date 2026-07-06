@@ -38,22 +38,30 @@ jobs:
 
       - name: Resolve inputs
         id: input
+        env:
+          DISPATCH_CHART: ${{ github.event.client_payload.chart }}
+          DISPATCH_VERSION: ${{ github.event.client_payload.version }}
+          MANUAL_CHART: ${{ inputs.chart }}
+          MANUAL_VERSION: ${{ inputs.version }}
         run: |
-          CHART="${{ github.event.client_payload.chart || inputs.chart }}"
-          VERSION="${{ github.event.client_payload.version || inputs.version }}"
+          CHART="${DISPATCH_CHART:-$MANUAL_CHART}"
+          VERSION="${DISPATCH_VERSION:-$MANUAL_VERSION}"
 
           case "$CHART" in
             acornops-platform|acornops-agentk) ;;
             *) echo "unsupported chart: $CHART"; exit 1 ;;
           esac
 
-          if [ -z "$VERSION" ]; then
-            echo "version is required"
-            exit 1
-          fi
+          case "$VERSION" in
+            "") echo "version is required"; exit 1 ;;
+            *[!0-9A-Za-z.+-]*) echo "unsupported version: $VERSION"; exit 1 ;;
+          esac
 
-          echo "chart=$CHART" >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          {
+            echo "chart=$CHART"
+            echo "version=$VERSION"
+            echo "package=$CHART-$VERSION.tgz"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR for Helm
         run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io --username "${{ github.actor }}" --password-stdin
@@ -67,15 +75,33 @@ jobs:
 
       - name: Update Helm repository index
         run: |
+          cp index.yaml .publish/index.before.yaml
+          grep -v '^generated:' index.yaml > .publish/index.before.normalized.yaml
+
+          if [ -f "${{ steps.input.outputs.package }}" ] && cmp -s ".publish/${{ steps.input.outputs.package }}" "${{ steps.input.outputs.package }}"; then
+            PACKAGE_UNCHANGED=true
+          else
+            PACKAGE_UNCHANGED=false
+          fi
+
           cp .publish/*.tgz .
           helm repo index . \
             --url https://acornops.github.io/charts \
             --merge index.yaml
+
+          grep -v '^generated:' index.yaml > .publish/index.after.normalized.yaml
+          if [ "$PACKAGE_UNCHANGED" = true ] && cmp -s .publish/index.before.normalized.yaml .publish/index.after.normalized.yaml; then
+            cp .publish/index.before.yaml index.yaml
+          fi
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.yaml ./*.tgz
-          git commit -m "chore: publish ${{ steps.input.outputs.chart }} ${{ steps.input.outputs.version }}" || exit 0
+          if git diff --cached --quiet; then
+            echo "No chart mirror changes to publish."
+            exit 0
+          fi
+          git commit -m "chore: publish ${{ steps.input.outputs.chart }} ${{ steps.input.outputs.version }}"
           git push
