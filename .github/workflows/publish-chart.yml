@@ -73,30 +73,30 @@ jobs:
 
       - name: Pull OCI chart
         run: |
-          mkdir -p .publish
+          mkdir -p "$RUNNER_TEMP/chart-mirror"
           helm pull "oci://ghcr.io/acornops/charts/${{ steps.input.outputs.chart }}" \
             --version "${{ steps.input.outputs.version }}" \
-            --destination .publish
+            --destination "$RUNNER_TEMP/chart-mirror"
 
       - name: Update Helm repository index
         run: |
-          cp index.yaml .publish/index.before.yaml
-          grep -v '^generated:' index.yaml > .publish/index.before.normalized.yaml
+          cp index.yaml "$RUNNER_TEMP/index.before.yaml"
+          grep -v '^generated:' index.yaml > "$RUNNER_TEMP/index.before.normalized.yaml"
 
-          if [ -f "${{ steps.input.outputs.package }}" ] && cmp -s ".publish/${{ steps.input.outputs.package }}" "${{ steps.input.outputs.package }}"; then
+          if [ -f "${{ steps.input.outputs.package }}" ] && cmp -s "$RUNNER_TEMP/chart-mirror/${{ steps.input.outputs.package }}" "${{ steps.input.outputs.package }}"; then
             PACKAGE_UNCHANGED=true
           else
             PACKAGE_UNCHANGED=false
           fi
 
-          cp .publish/*.tgz .
+          cp "$RUNNER_TEMP/chart-mirror"/*.tgz .
           helm repo index . \
             --url https://acornops.github.io/charts \
             --merge index.yaml
 
-          grep -v '^generated:' index.yaml > .publish/index.after.normalized.yaml
-          if [ "$PACKAGE_UNCHANGED" = true ] && cmp -s .publish/index.before.normalized.yaml .publish/index.after.normalized.yaml; then
-            cp .publish/index.before.yaml index.yaml
+          grep -v '^generated:' index.yaml > "$RUNNER_TEMP/index.after.normalized.yaml"
+          if [ "$PACKAGE_UNCHANGED" = true ] && cmp -s "$RUNNER_TEMP/index.before.normalized.yaml" "$RUNNER_TEMP/index.after.normalized.yaml"; then
+            cp "$RUNNER_TEMP/index.before.yaml" index.yaml
           fi
 
       - name: Commit changes
