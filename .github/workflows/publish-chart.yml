@@ -1,0 +1,81 @@
+name: Publish Helm Chart Mirror
+
+on:
+  repository_dispatch:
+    types:
+      - helm-chart-released
+  workflow_dispatch:
+    inputs:
+      chart:
+        description: Chart name to mirror from GHCR
+        required: true
+        type: choice
+        options:
+          - acornops-platform
+          - acornops-agentk
+      version:
+        description: Chart version to mirror
+        required: true
+        type: string
+
+concurrency:
+  group: helm-chart-index
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout chart repository
+        uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+
+      - name: Resolve inputs
+        id: input
+        run: |
+          CHART="${{ github.event.client_payload.chart || inputs.chart }}"
+          VERSION="${{ github.event.client_payload.version || inputs.version }}"
+
+          case "$CHART" in
+            acornops-platform|acornops-agentk) ;;
+            *) echo "unsupported chart: $CHART"; exit 1 ;;
+          esac
+
+          if [ -z "$VERSION" ]; then
+            echo "version is required"
+            exit 1
+          fi
+
+          echo "chart=$CHART" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR for Helm
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Pull OCI chart
+        run: |
+          mkdir -p .publish
+          helm pull "oci://ghcr.io/acornops/charts/${{ steps.input.outputs.chart }}" \
+            --version "${{ steps.input.outputs.version }}" \
+            --destination .publish
+
+      - name: Update Helm repository index
+        run: |
+          cp .publish/*.tgz .
+          helm repo index . \
+            --url https://acornops.github.io/charts \
+            --merge index.yaml
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.yaml ./*.tgz
+          git commit -m "chore: publish ${{ steps.input.outputs.chart }} ${{ steps.input.outputs.version }}" || exit 0
+          git push
