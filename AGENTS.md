@@ -10,8 +10,9 @@ When using a coding agent directly inside this repo, start from this repository
 root and read this file before editing files.
 
 For work that touches multiple AcornOps repositories, start the agent from the
-`acornops-workspace` root instead. The workspace root contains the cross-repo
-manifest, shared skills, validation helpers, and PR coordination workflow.
+AcornOps workspace root instead. The workspace root is cloned from the
+`acornops` repository and contains the cross-repo manifest, shared skills,
+validation helpers, and PR coordination workflow.
 
 ## Working Rules
 
