@@ -2,8 +2,29 @@ apiVersion: v1
 entries:
   acornops-agentk:
   - apiVersion: v2
+    appVersion: 0.0.1-experimental.10
+    created: "2026-07-21T02:14:35.888894883Z"
+    description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
+      execution.
+    digest: 501b131f08c5b307ab54de765109eececed06234f08aac9b59b4265469bccb94
+    home: https://github.com/acornops/agentk
+    keywords:
+    - acornops
+    - kubernetes
+    - aiops
+    - agent
+    maintainers:
+    - name: AcornOps
+    name: acornops-agentk
+    sources:
+    - https://github.com/acornops/agentk
+    type: application
+    urls:
+    - https://acornops.github.io/charts/acornops-agentk-0.0.1-experimental.10.tgz
+    version: 0.0.1-experimental.10
+  - apiVersion: v2
     appVersion: 0.0.1-experimental.9
-    created: "2026-07-16T18:26:51.25803255Z"
+    created: "2026-07-21T02:14:35.892312696Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: 96d0c17720d20fa7f1588c8131d7db4a3e04dc2ff1904854112dc38fd095d813
@@ -24,7 +45,7 @@ entries:
     version: 0.0.1-experimental.9
   - apiVersion: v2
     appVersion: 0.0.1-experimental.8
-    created: "2026-07-16T18:26:51.257203855Z"
+    created: "2026-07-21T02:14:35.891528135Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: 56cb95cea0df7e02979f049b5f77921eb9af52703a9e023ee0dacdf88234a982
@@ -45,7 +66,7 @@ entries:
     version: 0.0.1-experimental.8
   - apiVersion: v2
     appVersion: 0.0.1-experimental.7
-    created: "2026-07-16T18:26:51.256453307Z"
+    created: "2026-07-21T02:14:35.890984489Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: ecb27b0a4ed0e91fc3db9886db74858e9cf3f4a51f29e8554fd2825160c878d5
@@ -66,7 +87,7 @@ entries:
     version: 0.0.1-experimental.7
   - apiVersion: v2
     appVersion: 0.0.1-experimental.6
-    created: "2026-07-16T18:26:51.255392556Z"
+    created: "2026-07-21T02:14:35.890438295Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: 7b1afc50574592cde9ad035d8b82ee64dbc37453da72c5e9db941f83dee5b75d
@@ -87,7 +108,7 @@ entries:
     version: 0.0.1-experimental.6
   - apiVersion: v2
     appVersion: 0.0.1-experimental.5
-    created: "2026-07-16T18:26:51.25414725Z"
+    created: "2026-07-21T02:14:35.889938251Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: 7646fff738aec373dc1359f66a3c4b95ed2ddbeb45f520b8d566453d712d705b
@@ -108,7 +129,7 @@ entries:
     version: 0.0.1-experimental.5
   - apiVersion: v2
     appVersion: 0.0.1-experimental.4
-    created: "2026-07-16T18:26:51.253444433Z"
+    created: "2026-07-21T02:14:35.889377986Z"
     description: AcornOps Kubernetes agent for outbound cluster telemetry and tool
       execution.
     digest: e2a865976e09a4f773b810da568c9ead09eb04aff809d32322904cf46fd2df36
@@ -130,7 +151,7 @@ entries:
   acornops-platform:
   - apiVersion: v2
     appVersion: 0.0.1-experimental.13
-    created: "2026-07-16T18:26:51.271772421Z"
+    created: "2026-07-21T02:14:35.902608215Z"
     description: AcornOps central platform services for Kubernetes
     digest: 0ec80fd9ce464f802391225f92bdb83f9632fe5bb4a120b92301e2def1c2a35b
     name: acornops-platform
@@ -140,7 +161,7 @@ entries:
     version: 0.0.1-experimental.13
   - apiVersion: v2
     appVersion: 0.0.1-experimental.12
-    created: "2026-07-16T18:26:51.268825685Z"
+    created: "2026-07-21T02:14:35.900786992Z"
     description: AcornOps central platform services for Kubernetes
     digest: e6a9bccf1451e96901f339f8b6846714d2d4ce762e1ce2fc4356e0bc4d424117
     name: acornops-platform
@@ -150,7 +171,7 @@ entries:
     version: 0.0.1-experimental.12
   - apiVersion: v2
     appVersion: 0.0.1-experimental.11
-    created: "2026-07-16T18:26:51.266593399Z"
+    created: "2026-07-21T02:14:35.898176754Z"
     description: AcornOps central platform services for Kubernetes
     digest: ad585475d32a2af5cab0bfbc4ad23534d94f8654abafad3c90b6a11139c28fd8
     name: acornops-platform
@@ -160,7 +181,7 @@ entries:
     version: 0.0.1-experimental.11
   - apiVersion: v2
     appVersion: 0.0.1-experimental.10
-    created: "2026-07-16T18:26:51.263261203Z"
+    created: "2026-07-21T02:14:35.89636854Z"
     description: AcornOps central platform services for Kubernetes
     digest: a0d66963270af5cd028af44d996e25598ede833cf25ea91be9b18eb4a7d4ad53
     name: acornops-platform
@@ -170,7 +191,7 @@ entries:
     version: 0.0.1-experimental.10
   - apiVersion: v2
     appVersion: 0.0.1-experimental.9
-    created: "2026-07-16T18:26:51.288626598Z"
+    created: "2026-07-21T02:14:35.91763142Z"
     description: AcornOps central platform services for Kubernetes
     digest: fef5232307c216c575b6149007287c727e79046fd071c7abdee62674d33d3247
     name: acornops-platform
@@ -180,7 +201,7 @@ entries:
     version: 0.0.1-experimental.9
   - apiVersion: v2
     appVersion: 0.0.1-experimental.8
-    created: "2026-07-16T18:26:51.286504876Z"
+    created: "2026-07-21T02:14:35.915197771Z"
     description: AcornOps central platform services for Kubernetes
     digest: 2bcdacdf61e478eb6de0f9edf049a81858c5cc871f7c1c71b93783759b260811
     name: acornops-platform
@@ -190,7 +211,7 @@ entries:
     version: 0.0.1-experimental.8
   - apiVersion: v2
     appVersion: 0.0.1-experimental.7
-    created: "2026-07-16T18:26:51.284508371Z"
+    created: "2026-07-21T02:14:35.913574584Z"
     description: AcornOps central platform services for Kubernetes
     digest: 0b4e71c8836989156f4c38f74ce56c09704ab4792580c9831a802fc95df19e62
     name: acornops-platform
@@ -200,7 +221,7 @@ entries:
     version: 0.0.1-experimental.7
   - apiVersion: v2
     appVersion: 0.0.1-experimental.6
-    created: "2026-07-16T18:26:51.28177326Z"
+    created: "2026-07-21T02:14:35.91191689Z"
     description: AcornOps central platform services for Kubernetes
     digest: 5d9b17b2a8231c5b8e5daefa469037bd584770967f00113785f1ed5cc881e26a
     name: acornops-platform
@@ -210,7 +231,7 @@ entries:
     version: 0.0.1-experimental.6
   - apiVersion: v2
     appVersion: 0.0.1-experimental.5
-    created: "2026-07-16T18:26:51.279829914Z"
+    created: "2026-07-21T02:14:35.909474932Z"
     description: AcornOps central platform services for Kubernetes
     digest: da4321120eaa9b4ab7c32a38317d1e79f059a73e5abb4f0f1628e399aeeec256
     name: acornops-platform
@@ -220,7 +241,7 @@ entries:
     version: 0.0.1-experimental.5
   - apiVersion: v2
     appVersion: 0.0.1-experimental.4
-    created: "2026-07-16T18:26:51.278030933Z"
+    created: "2026-07-21T02:14:35.908004335Z"
     description: AcornOps central platform services for Kubernetes
     digest: a986ab33527be978c0cec43a16021dd5e482f4cf415807306d82cc7817ba4463
     name: acornops-platform
@@ -230,7 +251,7 @@ entries:
     version: 0.0.1-experimental.4
   - apiVersion: v2
     appVersion: 0.0.1-experimental.3
-    created: "2026-07-16T18:26:51.275387509Z"
+    created: "2026-07-21T02:14:35.906477681Z"
     description: AcornOps central platform services for Kubernetes
     digest: 42c7a742df952185d4d48c2df7c8e0ea76a70652742771e9a674477bfd9f1604
     name: acornops-platform
@@ -240,7 +261,7 @@ entries:
     version: 0.0.1-experimental.3
   - apiVersion: v2
     appVersion: 0.0.1-experimental.2
-    created: "2026-07-16T18:26:51.273575018Z"
+    created: "2026-07-21T02:14:35.90451782Z"
     description: AcornOps central platform services for Kubernetes
     digest: ca2dcfffdc6ca50cefb52f39875a7d21902fb58d8cd700ecfe4dc9d6f0a0e765
     name: acornops-platform
@@ -250,7 +271,7 @@ entries:
     version: 0.0.1-experimental.2
   - apiVersion: v2
     appVersion: 0.0.1-experimental.1
-    created: "2026-07-16T18:26:51.259861756Z"
+    created: "2026-07-21T02:14:35.894557935Z"
     description: AcornOps central platform services for Kubernetes
     digest: 21f9ad3a3c7faa0b09623bb536af22879986539289b3877786f45005192c583f
     name: acornops-platform
@@ -258,4 +279,4 @@ entries:
     urls:
     - https://acornops.github.io/charts/acornops-platform-0.0.1-experimental.1.tgz
     version: 0.0.1-experimental.1
-generated: "2026-07-16T18:26:51.252627706Z"
+generated: "2026-07-21T02:14:35.888089787Z"
